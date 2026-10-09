@@ -357,6 +357,10 @@ https://github.com/TeamWiseFlow/xiaobei
 
 ![star](https://atomgit.com/wiseflow/xiaobei/star/badge.svg) 国内托管地址：[https://atomgit.com/wiseflow/xiaobei](https://atomgit.com/wiseflow/xiaobei)
 
+## 需求更新记录
+
+- 2026-10-09：新增「小贝 Skill Studio」操作面板设计原型（`.ohmyagent/design/v1/`）。零依赖单文件 `prototype.html`，可在 `file://` 下离线打开；含 8 个技能的总览网格与详情表单，支持必填/条件必填校验、指令预览与复制/下载、gateway 连接测试与发送、四态状态灯、loading/toast 反馈；覆盖桌面/平板/移动三档宽度与 75%/100%/125% 浏览器缩放，通过五角色设计评审（综合 8.05/10）与渲染质量门禁（91/100）。仅设计产物，未改动产品代码。
+
 ## 友情链接
 
 [<img src="assets/atomgit.png" alt="atomgit" height="60">](https://gitcode.com/atomgit_atomcode)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="https://github.com/TeamWiseFlow/xiaobei/raw/4.x/docs/logos/SiliconFlow.png" alt="siliconflow" height="40">](https://cloud.siliconflow.cn/i/WNLYbBpi)
