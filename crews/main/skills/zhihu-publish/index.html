@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="zhihu-publish">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知乎发布 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'zhihu-publish', emoji:'📝', name:'知乎发布',
+  desc:'在知乎发布文章或回答',
+  build:f=>{
+    if(f.mode==='answer'){
+      return `/zhihu-publish 写回答，问题：${f.questionUrl||'（请填写问题链接）'}，要点：${f.topic}`;
+    }
+    return `/zhihu-publish 发文章，标题：「${f.title}」，主题：${f.topic}`;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'mode',label:'发布模式',type:'select',options:[{v:'article',l:'发文章'},{v:'answer',l:'写回答'}],default:'article',driver:true,help:'决定下方参数是否必填'},
+  {key:'title',label:'文章标题',type:'text',requiredIf:function(f){return f.mode!=='answer';},placeholder:'最长100字符',help:'发文章时必填'},
+  {key:'topic',label:'文章主题/要点',type:'textarea',required:true,placeholder:'简述文章要写什么或回答要点'},
+  {key:'questionUrl',label:'问题链接',type:'url',requiredIf:function(f){return f.mode==='answer';},placeholder:'https://www.zhihu.com/question/...',help:'写回答时必填：要回答的问题链接'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>

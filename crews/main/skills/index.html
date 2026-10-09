@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="index">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全部技能 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li>
+        <a class="nav-item nav-home" id="navHome" href="./index.html">
+          <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+
+  <main class="main" id="mainArea" tabindex="-1">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">全部技能</h1>
+        <p class="page-desc">选择一个技能开始填写参数，生成发给小贝的指令。</p>
+      </div>
+    </header>
+    <div class="skill-grid">
+      <a class="skill-card" href="expert-xhs/index.html" data-skill="expert-xhs">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📕</span>
+          <span class="skill-card-title">小红书运营</span>
+        </span>
+        <span class="skill-card-desc">定位起号、内容DNA、图文笔记生产与发布、数据复盘</span>
+      </a>
+      <a class="skill-card" href="expert-douyin/index.html" data-skill="expert-douyin">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">🎵</span>
+          <span class="skill-card-title">抖音运营</span>
+        </span>
+        <span class="skill-card-desc">定位起号、内容DNA、图文笔记生产与发布、视频全案Brief、数据复盘</span>
+      </a>
+      <a class="skill-card" href="expert-wx-mp/index.html" data-skill="expert-wx-mp">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📱</span>
+          <span class="skill-card-title">公众号运营</span>
+        </span>
+        <span class="skill-card-desc">定位起号、选题写作、排版发布、数据复盘</span>
+      </a>
+      <a class="skill-card" href="expert-wx-channel/index.html" data-skill="expert-wx-channel">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📺</span>
+          <span class="skill-card-title">视频号运营</span>
+        </span>
+        <span class="skill-card-desc">视频号定位起号、内容DNA、视频全案Brief、发布与数据复盘</span>
+      </a>
+      <a class="skill-card" href="viral-chaser/index.html" data-skill="viral-chaser">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">🎯</span>
+          <span class="skill-card-title">爆款拆解</span>
+        </span>
+        <span class="skill-card-desc">转发视频链接，自动下载、ASR转写、关键帧抽取、结构化拆解分析</span>
+      </a>
+      <a class="skill-card" href="weibo-publish/index.html" data-skill="weibo-publish">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📢</span>
+          <span class="skill-card-title">微博发布</span>
+        </span>
+        <span class="skill-card-desc">在微博发布文字、图文或视频</span>
+      </a>
+      <a class="skill-card" href="zhihu-publish/index.html" data-skill="zhihu-publish">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📝</span>
+          <span class="skill-card-title">知乎发布</span>
+        </span>
+        <span class="skill-card-desc">在知乎发布文章或回答</span>
+      </a>
+      <a class="skill-card" href="wxwork-moments/index.html" data-skill="wxwork-moments">
+        <span class="skill-card-head">
+          <span class="skill-card-badge" aria-hidden="true">📱</span>
+          <span class="skill-card-title">企微朋友圈发布</span>
+        </span>
+        <span class="skill-card-desc">企业微信客户朋友圈发布（文字/图片/视频/链接）</span>
+      </a>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="_shared/skill-ui.js"></script>
+<script>
+SkillUI.init();
+</script>
+</body>
+</html>

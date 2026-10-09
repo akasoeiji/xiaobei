@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="expert-douyin">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>抖音运营 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'expert-douyin', emoji:'🎵', name:'抖音运营',
+  desc:'定位起号、内容DNA、图文笔记生产与发布、视频全案Brief、数据复盘',
+  build:f=>{
+    let s=`/expert-douyin 做一条${f.kind==='note'?'图文':'视频'}内容，选题：「${f.topic}」`;
+    if(f.style) s+=`，风格：${f.style}`;
+    if(f.account) s+=`，账号：${f.account}`;
+    return s;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'topic',label:'选题',type:'text',required:true,placeholder:'例如：打工人早餐3分钟搞定'},
+  {key:'kind',label:'内容类型',type:'select',options:[{v:'video',l:'视频'},{v:'note',l:'图文'}],default:'video'},
+  {key:'style',label:'风格',type:'select',options:[{v:'活泼',l:'活泼'},{v:'专业',l:'专业'}],default:'活泼'},
+  {key:'account',label:'账号',type:'text',required:false,placeholder:'可选，默认用主账号',help:'账号名或平台标识，留空则用主账号'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>

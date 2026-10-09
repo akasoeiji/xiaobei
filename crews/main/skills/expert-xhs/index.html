@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="expert-xhs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小红书运营 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'expert-xhs', emoji:'📕', name:'小红书运营',
+  desc:'定位起号、内容DNA、图文笔记生产与发布、数据复盘',
+  build:f=>{
+    let s='/expert-xhs ';
+    if(f.account) s+=`用「${f.account}」 `;
+    s+=`以「${f.style||'活泼'}」风格写一篇小红书，主题：「${f.topic}」`;
+    if(f.reference) s+=`；参考：${f.reference}`;
+    return s;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'topic',label:'内容主题',type:'text',required:true,placeholder:'例如：如何高效学习英语',help:'必填。一句话说清要写什么'},
+  {key:'style',label:'风格',type:'select',options:[{v:'活泼',l:'活泼'},{v:'专业',l:'专业'},{v:'搞笑',l:'搞笑'}],default:'活泼'},
+  {key:'account',label:'账号',type:'text',required:false,placeholder:'可选，默认用主账号',help:'账号名或平台标识，留空则用主账号'},
+  {key:'reference',label:'参考链接',type:'url',required:false,placeholder:'https://...'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>

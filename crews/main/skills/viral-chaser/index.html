@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="viral-chaser">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>爆款拆解 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'viral-chaser', emoji:'🎯', name:'爆款拆解',
+  desc:'转发视频链接，自动下载、ASR转写、关键帧抽取、结构化拆解分析',
+  build:f=>{
+    return `/viral-chaser 拆解这个视频：${f.url}`;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'url',label:'视频链接',type:'url',required:true,placeholder:'v.douyin.com / b23.tv / xhslink.com / xhslink.cn',
+   help:'支持抖音、B站、小红书视频链接'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>

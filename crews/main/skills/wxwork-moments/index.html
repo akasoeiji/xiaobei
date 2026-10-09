@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="wxwork-moments">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>企微朋友圈发布 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'wxwork-moments', emoji:'📱', name:'企微朋友圈发布',
+  desc:'企业微信客户朋友圈发布（文字/图片/视频/链接）',
+  build:f=>{
+    if(f.type==='link'){
+      let s=`/wxwork-moments 发链接朋友圈：链接 ${f.linkUrl}，标题「${f.linkTitle}」，正文：「${f.content}」`;
+      if(f.material) s+=`，封面：${f.material}`;
+      return s;
+    }
+    let s=`/wxwork-moments 发${f.type==='image'?'图文':f.type==='video'?'视频':''}朋友圈：「${f.content}」`;
+    if(f.material) s+=`，素材：${f.material}`;
+    return s;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'type',label:'内容类型',type:'select',options:[{v:'text',l:'纯文字'},{v:'image',l:'图文'},{v:'video',l:'视频'},{v:'link',l:'链接'}],default:'text',driver:true,
+   help:'决定下方哪些参数必填'},
+  {key:'content',label:'朋友圈正文',type:'textarea',required:true,placeholder:'输入朋友圈内容',
+   help:'必填。正文不要包含换行，企业微信接口无法解析'},
+  {key:'linkUrl',label:'链接 URL',type:'url',requiredIf:function(f){return f.type==='link';},
+   placeholder:'https://example.com/article',help:'链接模式必填：要分享的网页地址'},
+  {key:'linkTitle',label:'链接标题',type:'text',requiredIf:function(f){return f.type==='link';},
+   placeholder:'文章标题',help:'链接模式必填：分享卡片上的标题'},
+  {key:'material',label:'素材路径',type:'text',requiredIf:function(f){return f.type==='image'||f.type==='video'||f.type==='link';},
+   placeholder:'本地图片/视频路径',help:'图文最多 9 图；视频 1 个（≤30 秒、≤10MB）；链接模式必附封面图，否则发布失败'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>

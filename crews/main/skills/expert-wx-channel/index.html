@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN" data-skill="expert-wx-channel">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>视频号运营 · xiaobei Skill Studio</title>
+<link rel="stylesheet" href="../_shared/skill-ui.css">
+</head>
+<body>
+<a href="#mainArea" class="skip-link">跳到主内容</a>
+<div class="app" id="app">
+  <aside class="sidebar" role="navigation" aria-label="技能导航">
+    <div class="brand">
+      <span class="brand-emoji" aria-hidden="true">🐚</span>
+      <div>
+        <div class="brand-name">小贝 Skill Studio</div>
+        <div class="brand-sub">可视化操作面板</div>
+      </div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <ul class="nav-list">
+      <li><a class="nav-item nav-home" id="navHome" href="../index.html">
+        <span class="nav-emoji" aria-hidden="true">🏠</span><span class="nav-label">全部技能</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <span class="status-light" id="statusLight" data-status="unconnected">
+        <span class="status-dot"></span>
+        <span class="status-text">未连接 gateway</span>
+      </span>
+    </div>
+  </aside>
+  <main class="main" id="mainArea" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../_shared/skill-ui.js"></script>
+<script>
+window.SKILL_META = {
+  id:'expert-wx-channel', emoji:'📺', name:'视频号运营',
+  desc:'视频号定位起号、内容DNA、视频全案Brief、发布与数据复盘',
+  build:f=>{
+    let s=`/expert-wx-channel 做一条视频号内容，选题：「${f.topic}」，目标时长：${f.duration||'30s'}`;
+    if(f.account) s+=`，账号：${f.account}`;
+    return s;
+  }
+};
+window.SKILL_FIELDS = [
+  {key:'topic',label:'视频选题',type:'text',required:true,placeholder:'例如：30秒学会一个Excel技巧'},
+  {key:'duration',label:'目标时长',type:'select',options:[{v:'15s',l:'15秒'},{v:'30s',l:'30秒'},{v:'60s',l:'60秒'}],default:'30s'},
+  {key:'account',label:'账号',type:'text',required:false,placeholder:'可选，默认用主账号',help:'账号名或平台标识，留空则用主账号'}
+];
+SkillUI.initSkill();
+</script>
+</body>
+</html>
